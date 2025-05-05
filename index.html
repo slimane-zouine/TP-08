@@ -1,0 +1,42 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Jeu de Deviner un Nombre</title>
+  <script>
+    function devinerNombre() {
+      const nombreADeviner = Math.floor(Math.random() * 10) + 1;
+      let tentative;
+      let essais = 0;
+
+      while (true) {
+        tentative = prompt("Devinez un nombre entre 1 et 10 :");
+        essais++;
+
+        if (tentative === null) {
+          alert("Jeu annulé.");
+          break;
+        }
+
+        tentative = parseInt(tentative, 10);
+
+        if (isNaN(tentative) || tentative < 1 || tentative > 10) {
+          alert("Veuillez entrer un nombre valide entre 1 et 10.");
+        } else if (tentative < nombreADeviner) {
+          alert("C'est plus grand !");
+        } else if (tentative > nombreADeviner) {
+          alert("C'est plus petit !");
+        } else {
+          alert("Bravo ! Vous avez trouvé en " + essais + " tentative(s).");
+          break;
+        }
+      }
+    }
+  </script>
+</head>
+<body>
+  <h1>Jeu de Deviner un Nombre</h1>
+  <button onclick="devinerNombre()">Jouer</button>
+</body>
+</html>
